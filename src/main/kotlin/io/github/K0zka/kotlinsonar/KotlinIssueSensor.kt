@@ -1,26 +1,24 @@
 package io.github.K0zka.kotlinsonar
 
 import org.slf4j.LoggerFactory
-import org.sonar.api.batch.Sensor
-import org.sonar.api.batch.SensorContext
 import org.sonar.api.batch.fs.FileSystem
-import org.sonar.api.component.ResourcePerspectives
-import org.sonar.api.resources.Project
+import org.sonar.api.batch.sensor.Sensor
+import org.sonar.api.batch.sensor.SensorContext
+import org.sonar.api.batch.sensor.SensorDescriptor
 
 class KotlinIssueSensor(
-		private val fileSystem: FileSystem,
-		private val perspectives: ResourcePerspectives) : Sensor {
-
-	companion object {
-		private val logger = LoggerFactory.getLogger(KotlinIssueSensor::class.java)!!
+		private val fileSystem: FileSystem) : Sensor {
+	override fun describe(descriptor: SensorDescriptor?) {
+		descriptor!!.onlyOnLanguage(kotlinLanguageName).name("Kotlin Sensor")
 	}
 
-	override fun shouldExecuteOnProject(project: Project): Boolean
-			= fileSystem.hasFiles { it.language() == kotlinLanguageName }
-
-	override fun analyse(project: Project, context: SensorContext) {
+	override fun execute(context: SensorContext?) {
 		for (input in fileSystem.inputFiles { it.language() == kotlinLanguageName }) {
 			logger.debug("Analysing {}", input.relativePath())
 		}
+	}
+
+	companion object {
+		private val logger = LoggerFactory.getLogger(KotlinIssueSensor::class.java)!!
 	}
 }

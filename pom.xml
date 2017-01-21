@@ -45,18 +45,18 @@
     </licenses>
     <url>https://github.com/K0zka/kotlin-sonar/</url>
     <properties>
-        <kotlin.version>1.0.0-beta-1103</kotlin.version>
-        <sonar.buildVersion>4.5.2</sonar.buildVersion>
+        <kotlin.version>1.0.6</kotlin.version>
+        <sonar.buildVersion>6.2</sonar.buildVersion>
+        <jacoco.version>0.7.8</jacoco.version>
     </properties>
     <dependencies>
 
         <dependency>
-            <groupId>org.codehaus.sonar</groupId>
+            <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
             <version>${sonar.buildVersion}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-runtime</artifactId>
@@ -68,15 +68,21 @@
             <version>${kotlin.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kunit</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.core</artifactId>
+            <version>${jacoco.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -91,16 +97,13 @@
 
                 <executions>
                     <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
+                        <id>default-compile</id>
                         <goals>
                             <goal>compile</goal>
                         </goals>
                     </execution>
-
                     <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
+                        <id>default-test-compile</id>
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
