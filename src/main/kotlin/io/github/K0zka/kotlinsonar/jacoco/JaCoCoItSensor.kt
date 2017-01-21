@@ -11,7 +11,7 @@ import org.sonar.api.scan.filesystem.PathResolver
 
 import java.io.File
 
-class JaCoCoItSensor(private val groovy: Kotlin, private val configuration: JaCoCoConfiguration, private val fileSystem: FileSystem, private val pathResolver: PathResolver) : Sensor {
+class JaCoCoItSensor(private val kotlin: Kotlin, private val configuration: JaCoCoConfiguration, private val fileSystem: FileSystem, private val pathResolver: PathResolver) : Sensor {
 
     override fun describe(descriptor: SensorDescriptor) {
         descriptor.onlyOnLanguage(kotlinLanguageName).name(this.toString())
@@ -33,7 +33,7 @@ class JaCoCoItSensor(private val groovy: Kotlin, private val configuration: JaCo
         return shouldExecute
     }
 
-    internal inner class ITAnalyzer : AbstractAnalyzer(groovy, fileSystem, pathResolver) {
+    internal inner class ITAnalyzer : AbstractAnalyzer(kotlin, fileSystem, pathResolver) {
 
         override val reportPath: String?
             get() = configuration.itReportPath

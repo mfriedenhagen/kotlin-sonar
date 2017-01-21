@@ -8,7 +8,7 @@ import org.sonar.api.resources.AbstractLanguage
 
 class Kotlin(private val settings: Settings) : AbstractLanguage(kotlinLanguageName, kotlinLanguageName) {
 
-    override fun getFileSuffixes(): Array<out String>
+    override fun getFileSuffixes(): Array<String>
             = arrayOf(kotlinFileExtension)
 
     fun getBinaryDirectories() : List<String> {

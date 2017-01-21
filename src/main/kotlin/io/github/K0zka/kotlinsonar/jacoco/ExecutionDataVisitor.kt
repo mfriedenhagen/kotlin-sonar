@@ -22,10 +22,6 @@ class ExecutionDataVisitor : ISessionInfoVisitor, IExecutionDataVisitor {
         merged.put(defensiveCopy(data))
     }
 
-    fun getSessions(): Map<String, ExecutionDataStore> {
-        return sessions
-    }
-
     private fun defensiveCopy(data: ExecutionData): ExecutionData {
         val src = data.probes
         val dest = BooleanArray(src.size)

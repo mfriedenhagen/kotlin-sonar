@@ -134,7 +134,7 @@ abstract class AbstractAnalyzer(kotlin: Kotlin, fileSystem: FileSystem, private 
                     newCoverage.conditions(lineId, conditions, coveredConditions)
                 }
             } catch (e: IllegalStateException) {
-                JaCoCoExtensions.logger().warn("Limping along" + e)
+                JaCoCoExtensions.logger().debug("Limping along " + e)
             }
         }
     }

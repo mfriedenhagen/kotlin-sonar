@@ -2,9 +2,14 @@ package io.github.K0zka.kotlinsonar.jacoco
 
 import org.jacoco.core.analysis.Analyzer
 import org.jacoco.core.analysis.CoverageBuilder
-import org.jacoco.core.data.*
-import org.sonar.api.internal.google.common.base.Preconditions
-import java.io.*
+import org.jacoco.core.data.ExecutionDataReader
+import org.jacoco.core.data.ExecutionDataStore
+import org.jacoco.core.data.IExecutionDataVisitor
+import org.jacoco.core.data.ISessionInfoVisitor
+import java.io.BufferedInputStream
+import java.io.File
+import java.io.FileInputStream
+import java.io.IOException
 
 class JaCoCoReportReader(private val jacocoExecutionData: File?) {
     /**
@@ -22,7 +27,7 @@ class JaCoCoReportReader(private val jacocoExecutionData: File?) {
             return this
         }
 
-        JaCoCoExtensions.logger().info("Analysing {}", jacocoExecutionData)
+        JaCoCoExtensions.logger().info("Reading {}", jacocoExecutionData)
         try {
             BufferedInputStream(FileInputStream(jacocoExecutionData)).use { inputStream ->
                 val reader = ExecutionDataReader(inputStream)
