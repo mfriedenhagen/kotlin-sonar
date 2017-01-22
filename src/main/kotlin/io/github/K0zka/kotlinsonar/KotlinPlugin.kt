@@ -1,15 +1,12 @@
 package io.github.K0zka.kotlinsonar
 
 import io.github.K0zka.kotlinsonar.foundation.Kotlin
-import io.github.K0zka.kotlinsonar.foundation.KotlinJavaResourceLocator
 import io.github.K0zka.kotlinsonar.jacoco.JaCoCoExtensions
 import io.github.K0zka.kotlinsonar.surefire.KotlinSurefireParser
 import io.github.K0zka.kotlinsonar.surefire.KotlinSurefireSensor
 import org.sonar.api.Plugin
-import org.sonar.java.DefaultJavaResourceLocator
 import org.sonar.java.JavaClasspath
 import org.sonar.java.JavaTestClasspath
-import org.sonar.plugins.java.api.JavaResourceLocator
 
 class KotlinPlugin : Plugin {
 
@@ -18,7 +15,6 @@ class KotlinPlugin : Plugin {
                 Kotlin::class.java,
                 JavaClasspath::class.java,
                 JavaTestClasspath::class.java,
-                KotlinJavaResourceLocator::class.java,
                 KotlinSurefireParser::class.java,
                 KotlinSurefireSensor::class.java,
                 KotlinLintProfile::class.java,

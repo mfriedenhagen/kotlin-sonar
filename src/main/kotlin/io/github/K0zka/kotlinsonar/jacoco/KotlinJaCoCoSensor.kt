@@ -9,22 +9,22 @@ import org.sonar.api.scan.filesystem.PathResolver
 import org.sonar.java.JavaClasspath
 import org.sonar.plugins.jacoco.JaCoCoSensor
 import org.sonar.plugins.jacoco.JacocoConfiguration
+import org.sonar.plugins.java.api.JavaResourceLocator
 
 class KotlinJaCoCoSensor(
-        configuration : JacocoConfiguration,
+        configuration: JacocoConfiguration,
         perspectives: ResourcePerspectives,
-        fileSystem :FileSystem,
-        pathResolver:PathResolver,
-        javaResourceLocator: KotlinJavaResourceLocator,
+        fileSystem: FileSystem,
+        pathResolver: PathResolver,
+        javaResourceLocator : JavaResourceLocator,
         javaClasspath: JavaClasspath
 ) : JaCoCoSensor(
         configuration,
         perspectives,
         fileSystem,
         pathResolver,
-        javaResourceLocator,
+        KotlinJavaResourceLocator(javaResourceLocator, fileSystem),
         javaClasspath
-
 ) {
 
     override fun describe(descriptor: SensorDescriptor) {
