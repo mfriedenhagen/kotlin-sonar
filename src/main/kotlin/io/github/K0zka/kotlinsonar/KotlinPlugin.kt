@@ -18,7 +18,7 @@ class KotlinPlugin : Plugin {
                 Kotlin::class.java,
                 JavaClasspath::class.java,
                 JavaTestClasspath::class.java,
-                KotlinJavaResourceLocator::class,
+                KotlinJavaResourceLocator::class.java,
                 KotlinSurefireParser::class.java,
                 KotlinSurefireSensor::class.java,
                 KotlinLintProfile::class.java,
