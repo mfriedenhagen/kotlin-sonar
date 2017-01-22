@@ -1,8 +1,9 @@
 package io.github.K0zka.kotlinsonar.jacoco
 
+import org.sonar.api.utils.Version
 import org.sonar.api.utils.log.Logger
 import org.sonar.api.utils.log.Loggers
-
+import org.sonar.plugins.jacoco.JacocoConfiguration
 object JaCoCoExtensions {
 
     private val LOG = Loggers.get(JaCoCoExtensions::class.java)
@@ -10,12 +11,12 @@ object JaCoCoExtensions {
     val extensions: List<Any>
 
     init {
-        val e: MutableList<Any> = mutableListOf(JaCoCoConfiguration.propertyDefinitions)
+        val e: MutableList<Any> = mutableListOf(JacocoConfiguration.getPropertyDefinitions(Version.create(6, 2)))
         e.addAll(arrayOf(
-                JaCoCoConfiguration::class.java,
-                JaCoCoSensor::class.java,
-                JaCoCoItSensor::class.java,
-                JaCoCoOverallSensor::class.java))
+                JacocoConfiguration::class.java,
+                KotlinJaCoCoSensor::class.java,
+                KotlinJaCoCoItSensor::class.java,
+                KotlinJaCoCoOverallSensor::class.java))
         extensions = e.toList()
     }
 
