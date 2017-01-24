@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>io.github.K0zka</groupId>
     <artifactId>kotlin-sonar</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -8,12 +10,13 @@
 
     <name>Kotlin SonarQube plugin</name>
     <description>SonarQube plugin for Kotlin projects</description>
-
-    <scm>
-        <connection>scm:git:https://github.com/K0zka/kotlin-sonar</connection>
-        <developerConnection>scm:git:https://github.com/K0zka/kotlin-sonar</developerConnection>
-        <url>https://github.com/K0zka/kotlin-sonar</url>
-    </scm>
+    <url>https://github.com/K0zka/kotlin-sonar/</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
@@ -32,18 +35,16 @@
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:https://github.com/K0zka/kotlin-sonar</connection>
+        <developerConnection>scm:git:https://github.com/K0zka/kotlin-sonar</developerConnection>
+        <url>https://github.com/K0zka/kotlin-sonar</url>
+    </scm>
     <issueManagement>
         <system>github</system>
         <url>https://github.com/K0zka/kotlin-sonar/issues</url>
     </issueManagement>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
-        </license>
-    </licenses>
-    <url>https://github.com/K0zka/kotlin-sonar/</url>
     <properties>
         <kotlin.version>1.0.6</kotlin.version>
         <sonar.buildVersion>6.2</sonar.buildVersion>
@@ -52,7 +53,10 @@
         <sonar-packaging-maven-plugin.version>1.15</sonar-packaging-maven-plugin.version>
         <native2ascii-maven-plugin.version>1.0-beta-1</native2ascii-maven-plugin.version>
         <slf4j.version>1.7.21</slf4j.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -63,6 +67,11 @@
             <dependency>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-stdlib</artifactId>
+                <version>${kotlin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-reflect</artifactId>
                 <version>${kotlin.version}</version>
             </dependency>
         </dependencies>
@@ -125,6 +134,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
@@ -175,6 +185,18 @@
                                 <goal>report</goal>
                             </goals>
                         </execution>
+                        <execution>
+                            <id>default-prepare-agent-integration</id>
+                            <goals>
+                                <goal>prepare-agent-integration</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>default-report-integration</id>
+                            <goals>
+                                <goal>report-integration</goal>
+                            </goals>
+                        </execution>
                     </executions>
                 </plugin>
                 <plugin>
@@ -205,29 +227,28 @@
                         </execution>
                     </executions>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-integration-test</id>
+                            <goals>
+                                <goal>integration-test</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -241,6 +262,10 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>native2ascii-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
+
 </project>
