@@ -9,20 +9,19 @@ class KotlinCoverage(private val delegate: DefaultCoverage) : NewCoverage by del
 
     override fun lineHits(line: Int, hits: Int): NewCoverage {
         try {
-            return delegate.lineHits(line, hits)
+            delegate.lineHits(line, hits)
         } catch (e: IllegalStateException) {
             logger.warn("${delegate.inputFile()} has additional lines: ${e}")
-            return delegate
         }
+        return this
     }
 
     override fun conditions(line: Int, conditions: Int, coveredConditions: Int): NewCoverage {
         try {
-            return delegate.conditions(line, conditions, coveredConditions)
+            delegate.conditions(line, conditions, coveredConditions)
         } catch (e: IllegalStateException) {
             logger.warn("${delegate.inputFile()} has additional lines: ${e}")
-            return delegate
         }
-
+        return this
     }
 }
