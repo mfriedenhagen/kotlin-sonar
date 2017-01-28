@@ -22,9 +22,7 @@ package io.github.K0zka.kotlinsonar.surefire.api
 import org.sonar.api.batch.fs.FileSystem
 import org.sonar.api.config.Settings
 import org.sonar.api.scan.filesystem.PathResolver
-import org.sonar.api.utils.log.Logger
 import org.sonar.api.utils.log.Loggers
-
 import java.io.File
 
 object SurefireUtils {

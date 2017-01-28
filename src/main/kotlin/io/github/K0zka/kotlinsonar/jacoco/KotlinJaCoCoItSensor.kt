@@ -3,6 +3,7 @@ package io.github.K0zka.kotlinsonar.jacoco
 import io.github.K0zka.kotlinsonar.foundation.KotlinJavaResourceLocator
 import io.github.K0zka.kotlinsonar.kotlinLanguageName
 import org.sonar.api.batch.fs.FileSystem
+import org.sonar.api.batch.sensor.SensorContext
 import org.sonar.api.batch.sensor.SensorDescriptor
 import org.sonar.api.component.ResourcePerspectives
 import org.sonar.api.scan.filesystem.PathResolver
@@ -16,7 +17,7 @@ class KotlinJaCoCoItSensor(
         perspectives: ResourcePerspectives,
         fileSystem: FileSystem,
         pathResolver: PathResolver,
-        javaResourceLocator : JavaResourceLocator,
+        javaResourceLocator: JavaResourceLocator,
         javaClasspath: JavaClasspath
 ) : JaCoCoItSensor(
         configuration,
@@ -34,5 +35,9 @@ class KotlinJaCoCoItSensor(
 
     override fun toString(): String {
         return "Kotlin " + javaClass.simpleName
+    }
+
+    override fun execute(context: SensorContext) {
+        super.execute(KotlinSensorContext(context))
     }
 }

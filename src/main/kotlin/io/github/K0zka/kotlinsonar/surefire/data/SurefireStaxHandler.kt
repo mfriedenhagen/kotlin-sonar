@@ -6,10 +6,9 @@ import org.codehaus.staxmate.`in`.SMHierarchicCursor
 import org.codehaus.staxmate.`in`.SMInputCursor
 import org.sonar.api.utils.ParsingUtils
 import org.sonar.api.utils.StaxParser
-
-import javax.xml.stream.XMLStreamException
 import java.text.ParseException
-import java.util.Locale
+import java.util.*
+import javax.xml.stream.XMLStreamException
 
 class SurefireStaxHandler(private val index: UnitTestIndex) : StaxParser.XmlStreamHandler {
 
