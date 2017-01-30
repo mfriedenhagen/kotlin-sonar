@@ -3,6 +3,7 @@ package io.github.K0zka.kotlinsonar.foundation
 import io.github.K0zka.kotlinsonar.KotlinPlugin
 import io.github.K0zka.kotlinsonar.kotlinFileExtension
 import io.github.K0zka.kotlinsonar.kotlinLanguageName
+import org.jetbrains.kotlin.lexer.KotlinLexer
 import org.sonar.api.config.Settings
 import org.sonar.api.resources.AbstractLanguage
 
@@ -17,5 +18,9 @@ class Kotlin(private val settings: Settings) : AbstractLanguage(kotlinLanguageNa
             binaries = settings.getStringArray(KotlinPlugin.SONAR_KOTLIN_BINARIES_FALLBACK)
         }
         return binaries.toList()
+    }
+
+    fun tokenize(sourceCode: String) {
+
     }
 }

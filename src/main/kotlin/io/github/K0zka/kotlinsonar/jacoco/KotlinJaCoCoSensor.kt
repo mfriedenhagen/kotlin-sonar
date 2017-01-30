@@ -1,6 +1,7 @@
 package io.github.K0zka.kotlinsonar.jacoco
 
 import io.github.K0zka.kotlinsonar.foundation.KotlinJavaResourceLocator
+import io.github.K0zka.kotlinsonar.foundation.KotlinSensorContext
 import io.github.K0zka.kotlinsonar.kotlinLanguageName
 import org.sonar.api.batch.fs.FileSystem
 import org.sonar.api.batch.sensor.SensorContext

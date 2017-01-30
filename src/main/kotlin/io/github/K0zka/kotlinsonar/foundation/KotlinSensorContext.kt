@@ -1,5 +1,6 @@
-package io.github.K0zka.kotlinsonar.jacoco
+package io.github.K0zka.kotlinsonar.foundation
 
+import io.github.K0zka.kotlinsonar.jacoco.KotlinCoverage
 import org.sonar.api.batch.sensor.SensorContext
 import org.sonar.api.batch.sensor.coverage.NewCoverage
 import org.sonar.api.batch.sensor.coverage.internal.DefaultCoverage
