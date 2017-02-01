@@ -1,13 +1,9 @@
 package io.github.K0zka.kotlinsonar.jacoco
 
 import org.sonar.api.utils.Version
-import org.sonar.api.utils.log.Logger
-import org.sonar.api.utils.log.Loggers
 import org.sonar.plugins.jacoco.JacocoConfiguration
 
-object JaCoCoExtensions {
-
-    private val LOG = Loggers.get(JaCoCoExtensions::class.java)
+object KotlinJaCoCoExtensions {
 
     val extensions: List<Any>
 
@@ -21,9 +17,4 @@ object JaCoCoExtensions {
                 KotlinJaCoCoOverallSensor::class.java))
         extensions = e.toList()
     }
-
-    fun logger(): Logger {
-        return LOG
-    }
-
 }

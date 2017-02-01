@@ -1,7 +1,7 @@
 package io.github.K0zka.kotlinsonar
 
 import io.github.K0zka.kotlinsonar.foundation.Kotlin
-import io.github.K0zka.kotlinsonar.jacoco.JaCoCoExtensions
+import io.github.K0zka.kotlinsonar.jacoco.KotlinJaCoCoExtensions
 import io.github.K0zka.kotlinsonar.surefire.KotlinSurefireParser
 import io.github.K0zka.kotlinsonar.surefire.KotlinSurefireSensor
 import org.sonar.api.Plugin
@@ -20,7 +20,7 @@ class KotlinPlugin : Plugin {
                 KotlinLintProfile::class.java,
 				KotlinIssueSensor::class.java,
 				KotlinLintRulesDefinition::class.java))
-        context.addExtensions(JaCoCoExtensions.extensions)
+        context.addExtensions(KotlinJaCoCoExtensions.extensions)
 	}
     companion object {
         val SONAR_KOTLIN_BINARIES = "sonar.kotlin.binaries"
