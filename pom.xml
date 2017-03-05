@@ -46,7 +46,7 @@
     </issueManagement>
 
     <properties>
-        <kotlin.version>1.0.6</kotlin.version>
+        <kotlin.version>1.1.0</kotlin.version>
         <sonar.buildVersion>6.2</sonar.buildVersion>
         <jacoco.version>0.7.8</jacoco.version>
         <sonar-java.version>4.4.0.8066</sonar-java.version>
