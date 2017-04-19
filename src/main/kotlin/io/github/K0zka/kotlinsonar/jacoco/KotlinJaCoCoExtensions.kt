@@ -9,12 +9,9 @@ object KotlinJaCoCoExtensions {
 
     init {
         val e: MutableList<Any> = mutableListOf(JacocoConfiguration.getPropertyDefinitions(Version.create(6, 2)))
-        e.add(JacocoConfiguration.getPropertyDefinitions(Version.create(5, 6)))
         e.addAll(arrayOf(
                 JacocoConfiguration::class.java,
-                KotlinJaCoCoSensor::class.java,
-                KotlinJaCoCoItSensor::class.java,
-                KotlinJaCoCoOverallSensor::class.java))
+                KotlinJaCoCoSensor::class.java))
         extensions = e.toList()
     }
 }
