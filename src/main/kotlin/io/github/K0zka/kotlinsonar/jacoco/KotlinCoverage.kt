@@ -1,13 +1,23 @@
 package io.github.K0zka.kotlinsonar.jacoco
 
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.sonar.api.batch.fs.InputFile
 import org.sonar.api.batch.sensor.coverage.CoverageType
 import org.sonar.api.batch.sensor.coverage.NewCoverage
 
-class KotlinCoverage(private val delegate: NewCoverage) : NewCoverage by delegate {
-
-    private val logger = LoggerFactory.getLogger(KotlinCoverage::class.java)
+/**
+ * Encapsulate the {@link DefaultCoverage} delegate.
+ *
+ * We need to suppress the {@link IllegalStateException}s thrown
+ * when the number of lines is out of bounds.
+ * Kotlin produces extra class files for "functions" in a
+ * {@literal *Kt.class} which have no direct correspondence
+ * in the source.
+ */
+class KotlinCoverage(
+        private val delegate: NewCoverage,
+        private val logger: Logger = LoggerFactory.getLogger(KotlinCoverage::class.java)) : NewCoverage {
 
     private var inputFile: InputFile? = null
 
@@ -38,5 +48,9 @@ class KotlinCoverage(private val delegate: NewCoverage) : NewCoverage by delegat
             logger.debug("${inputFile} has additional lines: ${e}")
         }
         return this
+    }
+
+    override fun save() {
+        delegate.save()
     }
 }
