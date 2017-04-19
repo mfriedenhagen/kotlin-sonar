@@ -47,7 +47,7 @@ class SurefireStaxHandler(private val index: UnitTestIndex) : StaxParser.XmlStre
     @Throws(XMLStreamException::class)
     private fun getClassname(testCaseCursor: SMInputCursor, defaultClassname: String): String {
         var testClassName = testCaseCursor.getAttrValue("classname")
-        if (testClassName?.isNotBlank()?:false && testClassName.endsWith(")")) {
+        if (testClassName?.isNotBlank() ?: false && testClassName.endsWith(")")) {
             testClassName = testClassName.substring(0, testClassName.indexOf('('))
         }
         return testClassName ?: defaultClassname

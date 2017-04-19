@@ -6,19 +6,19 @@ import org.sonar.api.server.rule.RulesDefinitionXmlLoader
 
 class KotlinLintRulesDefinition : RulesDefinition {
 
-	companion object {
-		val logger = LoggerFactory.getLogger(KotlinLintRulesDefinition::class.java)
-	}
+    companion object {
+        val logger = LoggerFactory.getLogger(KotlinLintRulesDefinition::class.java)
+    }
 
-	override fun define(context: RulesDefinition.Context) {
-		val repository = context.createRepository(
-				kotlinLanguageName,
-				kotlinLanguageName
-		)
-		KotlinLintRulesDefinition::class.java.getResourceAsStream("/kotlin_rules.xml").use {
-			logger.info("input stream: {}", it)
-			RulesDefinitionXmlLoader().load(repository, it, "UTF-8")
-		}
-		repository.done()
-	}
+    override fun define(context: RulesDefinition.Context) {
+        val repository = context.createRepository(
+                kotlinLanguageName,
+                kotlinLanguageName
+        )
+        KotlinLintRulesDefinition::class.java.getResourceAsStream("/kotlin_rules.xml").use {
+            logger.info("input stream: {}", it)
+            RulesDefinitionXmlLoader().load(repository, it, "UTF-8")
+        }
+        repository.done()
+    }
 }

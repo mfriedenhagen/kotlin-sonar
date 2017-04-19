@@ -17,7 +17,7 @@ class KotlinCoverageTest {
     val inputFileMock = mock<DefaultInputFile>() {
         on { lines() }.thenReturn(10)
     }
-    
+
     @After
     fun verifyNoMoreInteractions() {
         verifyNoMoreInteractions(delegateMock)

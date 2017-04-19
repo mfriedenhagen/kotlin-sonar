@@ -11,7 +11,7 @@ import org.sonar.api.utils.Version
 class KotlinPluginTest {
     @Test
     fun define() {
-        val runtime = SonarRuntimeImpl.forSonarQube (Version.create(6, 2), SonarQubeSide.SCANNER)
+        val runtime = SonarRuntimeImpl.forSonarQube(Version.create(6, 2), SonarQubeSide.SCANNER)
         val context = Context(runtime)
         KotlinPlugin().define(context)
         assertThat(context.extensions.size, equalTo(14))

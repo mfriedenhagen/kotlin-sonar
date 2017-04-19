@@ -5,6 +5,6 @@ import org.sonar.api.profiles.RulesProfile
 import org.sonar.api.utils.ValidationMessages
 
 class KotlinLintProfile : ProfileDefinition() {
-	override fun createProfile(validationMessages: ValidationMessages): RulesProfile
-		= RulesProfile.create("Kotlin", kotlinLanguageName)
+    override fun createProfile(validationMessages: ValidationMessages): RulesProfile
+            = RulesProfile.create("Kotlin", kotlinLanguageName)
 }

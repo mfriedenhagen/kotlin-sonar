@@ -12,7 +12,7 @@ class Kotlin(private val settings: Settings) : AbstractLanguage(kotlinLanguageNa
     override fun getFileSuffixes(): Array<String>
             = arrayOf("." + kotlinFileExtension)
 
-    fun getBinaryDirectories() : List<String> {
+    fun getBinaryDirectories(): List<String> {
         var binaries = settings.getStringArray(KotlinPlugin.SONAR_KOTLIN_BINARIES)
         if (binaries.isEmpty()) {
             binaries = settings.getStringArray(KotlinPlugin.SONAR_KOTLIN_BINARIES_FALLBACK)

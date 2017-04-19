@@ -29,7 +29,7 @@ class ResourceUtils(private val stemPath: String) {
         return visitor
     }
 
-    fun coverageBuilder(klassName: String, visitor: ExecutionDataVisitor, classSuffix : String): CoverageBuilder {
+    fun coverageBuilder(klassName: String, visitor: ExecutionDataVisitor, classSuffix: String): CoverageBuilder {
         val coverageBuilder = CoverageBuilder()
         val analyzer = Analyzer(visitor.merged, coverageBuilder)
         val classFilesOfInterest = mutableListOf<String>(klassName + "Kt")
@@ -40,8 +40,8 @@ class ResourceUtils(private val stemPath: String) {
         println(classFilesOfInterest)
         classFilesOfInterest.forEach { classFile ->
             val path = "${classFile}.${classSuffix}"
-            if (hasResource("${path}"))
-                loadResource("${path}").use {
+            if (hasResource(path))
+                loadResource(path).use {
                     analyzer.analyzeClass(it, path)
                 }
         }

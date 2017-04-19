@@ -4,12 +4,12 @@ import java.io.PrintStream
 
 data class AKotlinThing private constructor(val name: String, val age: Int) {
 
-    fun writeIt(p : PrintStream) {
+    fun writeIt(p: PrintStream) {
         p.println(toString())
     }
 
     companion object {
-        fun valueOf(name: String, age: Int) : AKotlinThing = AKotlinThing(name, age)
+        fun valueOf(name: String, age: Int): AKotlinThing = AKotlinThing(name, age)
     }
 }
 
