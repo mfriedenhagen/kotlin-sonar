@@ -18,8 +18,8 @@ class KotlinJavaResourceLocator(
         val p = fileSystem.predicates()
         val inputFile = fileSystem.inputFile(p.and(
                 p.matchesPathPattern("**/" + className.replace('.', '/') + '.' + kotlinFileExtension),
-                p.hasLanguage(kotlinLanguageName),
-                p.hasType(InputFile.Type.MAIN)))
+                p.hasLanguage(kotlinLanguageName)
+        ))
         logger.debug("Processing {}", inputFile)
         return inputFile
     }
