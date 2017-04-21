@@ -95,6 +95,11 @@
             <version>${sonar-java.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-surefire</artifactId>
+            <version>${sonar-java.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-runtime</artifactId>
             <scope>runtime</scope>
