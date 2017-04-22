@@ -2,11 +2,7 @@ package io.github.K0zka.kotlinsonar
 
 import com.natpryce.hamkrest.assertion.assertThat
 import com.natpryce.hamkrest.equalTo
-import org.jacoco.core.analysis.Analyzer
-import org.jacoco.core.analysis.CoverageBuilder
-import org.jacoco.core.data.ExecutionDataReader
 import org.junit.Test
-import org.sonar.plugins.jacoco.ExecutionDataVisitor
 
 open class JaCoCoLoaderTest {
 
