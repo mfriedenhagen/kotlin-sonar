@@ -22,13 +22,13 @@ class KotlinCoverage(
     private var inputFile: InputFile? = null
 
     override fun onFile(inputFile: InputFile): NewCoverage {
-        this.inputFile = inputFile!!
+        this.inputFile = inputFile
         delegate.onFile(inputFile)
         return this
     }
 
     override fun ofType(type: CoverageType): NewCoverage {
-        delegate.ofType(type!!)
+        delegate.ofType(type)
         return this
     }
 
