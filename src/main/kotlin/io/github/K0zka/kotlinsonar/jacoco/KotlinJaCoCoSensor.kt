@@ -30,7 +30,7 @@ class KotlinJaCoCoSensor(
 ) {
 
     override fun describe(descriptor: SensorDescriptor) {
-        descriptor.onlyOnLanguage(kotlinLanguageName).name(this.toString())
+        descriptor.onlyOnLanguage(kotlinLanguageName).name(javaClass.simpleName)
     }
 
     override fun toString(): String {
