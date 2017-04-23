@@ -11,8 +11,9 @@ private val NAME = "Michael J."
 private val AGE = 51
 
 class AKotlinThingTest {
+
     @Test
-    fun writeIt() {
+    fun `Check writeIt`() {
         val sut = AKotlinThing.valueOf(NAME, AGE)
         val (name, age) = sut
         assertThat(name, equalTo(NAME))
@@ -20,5 +21,20 @@ class AKotlinThingTest {
         val mockedStream = mock<PrintStream>()
         sut.writeIt(mockedStream)
         verify(mockedStream).println(sut.toString())
+    }
+
+    @Test
+    fun `Check doIt`() {
+        val sut = AKotlinThing.valueOf(NAME, AGE)
+        val original = System.out
+        val mockedStream = mock<PrintStream>()
+        System.setOut(mockedStream)
+        try {
+            doIt()
+            verify(mockedStream).println(sut.toString())
+        } finally {
+            System.setOut(original)
+        }
+
     }
 }
