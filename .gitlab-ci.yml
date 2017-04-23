@@ -1,6 +1,22 @@
-image: mfriedenhagen/docker-maven:3.3.9-jdk-8
 variables:
   MAVEN_OPTS: "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true" 
-build:
+
+build jdk8 3.3.9:
+  image: mfriedenhagen/docker-maven:3.3.9-jdk-8
+  script:
+    - mvn -B -V verify
+
+build jdk 7 3.3.9:
+  image: mfriedenhagen/docker-maven:3.3.9-jdk-7
+  script:
+    - mvn -B -V verify
+
+build jdk8 3.5:
+  image: mfriedenhagen/docker-maven:3.5.0-SNAPSHOT-jdk-8
+  script:
+    - mvn -B -V verify
+
+build jdk 7 3.5:
+  image: mfriedenhagen/docker-maven:3.5.0-SNAPSHOT-jdk-7
   script:
     - mvn -B -V verify
