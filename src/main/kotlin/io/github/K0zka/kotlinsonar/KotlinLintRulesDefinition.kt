@@ -15,8 +15,9 @@ class KotlinLintRulesDefinition : RulesDefinition {
                 kotlinLanguageName,
                 kotlinLanguageName
         )
-        KotlinLintRulesDefinition::class.java.getResourceAsStream("/kotlin_rules.xml").use {
-            logger.info("input stream: {}", it)
+        val rulesFile = "/kotlin_rules.xml"
+        KotlinLintRulesDefinition::class.java.getResourceAsStream(rulesFile).use {
+            logger.info("Loading {}", rulesFile)
             RulesDefinitionXmlLoader().load(repository, it, "UTF-8")
         }
         repository.done()
